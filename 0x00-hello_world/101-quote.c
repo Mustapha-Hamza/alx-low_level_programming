@@ -2,8 +2,8 @@
 #include <unistd.h>
 
 /**
-  * main - print quote
-  * Return: Always 1 (Success)
+ * main - print quote
+ * Return: Always 1 (Success)
  */
 int main(void)
 {
