@@ -3,6 +3,7 @@
 /**
  * print_sign - print the sign of a number
  * @n: n is an integer
+ *Description: return of value print_sign
  *
  * Rturn: 1 (if positive), 0 (if zero0, -1 (if negative)
  */
