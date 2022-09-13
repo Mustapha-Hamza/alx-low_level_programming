@@ -9,6 +9,7 @@
 int main(void)
 {
 	int num, sum;
+
 	sum = 0;
 	for (num = 0; num < 1024; num++)
 				{
@@ -17,7 +18,6 @@ int main(void)
 						sum += num;
 					}
 				}
-				
 				printf("%d\n", sum);
 
 				return (0);
