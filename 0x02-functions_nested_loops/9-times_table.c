@@ -3,42 +3,44 @@
 /**
  * times_table - print the 9 times table
  *
- * Description: prints the 9 times table
- *
  * Return: Nothing
  */
-
 void times_table(void)
 {
-	int row, column, product, tens, ones;
+	int x, y;
 
-	for (row = 0; row <= 9; row++)
+	x = y = 0;
+	while (x <= 9)
 	{
-		for (column = 0; column <= 9; column++)
+		y = 0;
+		while (y <= 9)
 		{
-			product = row * column;
-			tens = product / 10;
-			ones = product % 10;
-
-			if (column == 0)
+			if ((x * y) < 10)
 			{
-				_putchar('0');
-			}
-			else if (product < 10)
-			{
-				_putchar(';');
-				_putchar(' ');
-				_putchar(' ');
-				_putchar(ones + '0');
+				if (y != 0)
+				{
+					_putchar(' ');
+				}
+				_putchar((x * y) + '0');
+				if (y != 9)
+				{
+					_putchar(',');
+					_putchar(' ');
+				}
 			}
 			else
 			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(tens + '0');
-				_putchar(ones + '0');
+				_putchar(((x * y) / 10) + '0');
+				_putchar(((x * y) % 10) + '0');
+				if (y != 9)
+				{
+					_putchar(',');
+					_putchar(',');
+				}
 			}
+			y++;
 		}
 		_putchar('\n');
+		x++;
 	}
 }
