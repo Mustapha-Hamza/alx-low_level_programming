@@ -1,51 +1,68 @@
-#include "main.h"
+#include <math.h>
+#include <main.h>
 
 /**
- * print_number - Print any number one character at a time
- * @n: Number to print
- *
- * Return: Nothing
+ * power - exponents
+ * @base: base
+ * @exp: exponent
+ * Return: result (int)
+ */
+
+int  power(int base, int exp)
+{
+	int i, num;
+
+	num = 1;
+	for (i = 0; i < exp; ++i)
+		num *= base;
+
+	return (num);
+}
+
+/**
+ * print_number - prints an integer
+ * @n: number to print
+ * Return void
  */
 
 void print_number(int n)
 {
-	long hn;
-	long n2 = n;
+	int negative = 0;
+	int digit;
+	int divisor;
+	int begin = 0;
+	int place = 10;
 
-	if (n2 < 0)
+	if (n < 0)
 	{
-		_putchar('-');
-		n2 *= -1;
+		negative = 1;
+		n = n * -1;
 	}
-	if (n2 / 100000 != 0)
+	while (place >= 0)
 	{
-		hn = n2 / 100000;
-		_putchar(hn / 10000 % 10 + '0');
-		_putchar(hn / 1000 % 10 + '0');
-		_putchar(hn / 100 % 10 + '0');
-		_putchar(hn / 10 % 10 + '0');
-		_putchar(hn % 10 + '0');
+		/*divisor = pow(10, place);*/
+		divisor = power(10, place);
+		digit = ((n / divisor) % 10);
+		if (digit == 0 && begin == 0)
+		{
+			place--;
+		}
+		else if (digit != 0 && begin == 0)
+		{
+			begin = 1;
+			if (negative == 1)
+				_putchar('-');
+			_putchar('0' + digit);
+			place--;
+		}
+		else
+		{
+			_putchar('0' + digit);
+			place--;
+		}
 	}
-		hn = n2 % 100000;
-		if (hn / 10000 % 10 != 0)
-		{
-			_putchar(hn / 10000 % 10 + '0');
-			_putchar(hn / 1000 % 10 + '0');
-			_putchar(hn / 100 % 10 + '0');
-			_putchar(hn / 10 % 10 + '0');
-		}
-		else if (hn / 1000 % 10 != 0)
-		{
-			_putchar(hn / 1000 % 10 + '0');
-			_putchar(hn / 100 % 10 + '0');
-			_putchar(hn / 10 % 10 + '0');
-		}
-		else if (hn / 100 % 10 != 0)
-		{
-			_putchar(hn / 100 % 10 + '0');
-			_putchar(hn / 10 % 10 + '0');
-		}
-		else if (hn / 10 % 10 != 0)
-			_putchar(hn / 10 % 10 + '0');
-		_putchar(hn % 10 + '0');
+	if (digit == 0 && divisor == 1)
+	{
+		_putchar(48);
+	}
 }
