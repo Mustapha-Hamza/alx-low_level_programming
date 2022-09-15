@@ -11,7 +11,7 @@ void print_diagonal(int n)
 {
 	int line = 0;
 	int spaces;
-	
+
 	if (n > 0)
 	{
 		while (line < n)
@@ -21,9 +21,9 @@ void print_diagonal(int n)
 				_putchar(' ');
 			}
 
-				_putchar('\\');
-				_putchar('\n');
-				line++;
+			_putchar('\\');
+			_putchar('\n');
+			line++;
 		}
 	}
 	else
