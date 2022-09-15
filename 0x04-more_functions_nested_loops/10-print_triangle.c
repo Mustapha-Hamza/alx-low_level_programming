@@ -23,8 +23,7 @@ void print_triangle(int size)
 			}
 			for (hashes = 0; hashes < line + 1; hashes++)
 			{
-				_putchar('#');
-			
+				_putchar('#');		
 			}
 			_putchar('\n');
 			line++;
