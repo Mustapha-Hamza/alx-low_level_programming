@@ -1,27 +1,37 @@
 #include "main.h"
 /**
- * _atoi - entry point
- * @s: pointer to the argument string
+ * _atoi - Find and print the first number in a string as an int
+ * @s: String to convert to int
  *
  * Return: Integer
  */
 int _atoi(char *s)
 {
-	unsigned int res = 0, flag = 0;
+	int i, n, m;
 
-	while (*s != '\0')
+	i = n = m = 0;
+	while (*(s + i) != '\0')
 	{
-		if (*s > 47 && *s < 58)
+		if (*(s + i) == '-')
+			m++;
+		if (*(s + i) >= '0' && *(s + i) <= '9')
 		{
-			res = res * 10 + *s - '0';
-			if (*(s + 1)  < 48 || *(s + 1) > 57)
-				break;
+			while (*(s + i) >= '0' && *(s + i) <= '9')
+			{
+				if (n == 0)
+				{
+					n = (n * 10) + (*(s + i) - '0');
+					n *= -1;
+				}
+				else
+					n = (n * 10) - (*(s + i) - '0');
+				i++;
+			}
+			if (m % 2 == 0)
+				n *= -1;
+			return (n);
 		}
-		else if (*s == '-' && *(s + 1) > 47 && *(s + 1) < 58)
-			flag = 1;
-		s++;
+		i++;
 	}
-	if (flag > 0)
-		res *= -1;
-	return (res);
+	return (0);
 }
