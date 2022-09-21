@@ -1,4 +1,3 @@
-#include "main.h"
 /**
  * leet - Convert a string to leet speak
  * @s: string to convert
