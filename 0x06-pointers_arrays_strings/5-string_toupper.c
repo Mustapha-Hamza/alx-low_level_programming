@@ -1,4 +1,3 @@
-#include "main.h"
 /**
  * string_toupper - Convert all lowercase letters to uppercase
  * @s: String to capitalize
