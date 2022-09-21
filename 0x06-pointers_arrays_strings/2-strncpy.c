@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * _strncpy - Copy src string to dest, but only the n total of bytes
  * @dest: Where you are copying to
