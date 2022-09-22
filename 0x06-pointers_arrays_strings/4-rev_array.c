@@ -4,25 +4,22 @@
  * @a: The array to reverse
  * @n: The size of the array
  *
- * Return: Nothing
+ * Return: none
  */
 void reverse_array(int *a, int n)
 {
-	int tmp[100000];
-	int i;
+	int b[1000];
+	int count, length;
+	int c = 0;
 
-	i = 0;
-	while (i < n)
+	length = n - 1;
+	for (count = length; count >=  0; count--)
 	{
-		tmp[i] = a[i];
-		i++;
+		b[c] = a[count];
+		c++;
 	}
-	n--;
-	i = 0;
-	while (n >= 0)
-	{
-		a[n] = tmp[i];
-		n--;
-		i++;
-	}
+	c = 0;
+	for (; c <= length; c++)
+		a[c] = b[c];
 }
+
