@@ -8,18 +8,22 @@
  */
 void reverse_array(int *a, int n)
 {
-	int b[1000];
-	int count, length;
-	int c = 0;
+	int tmp[100000];
+	int i;
 
-	length = n - 1;
-	for (count = length; count >=  0; count--)
+	i = 0;
+	while (i < n)
 	{
-		b[c] = a[count];
-		c++;
+		tmp[i] = a[i];
+		i++;
 	}
-	c = 0;
-	for (; c <= length; c++)
-		a[c] = b[c];
+	n--;
+	i = 0;
+	while (n >= 0)
+	{
+		a[n] = tmp[i];
+		n--;
+		i++;
+	}
 }
 
