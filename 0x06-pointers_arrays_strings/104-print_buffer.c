@@ -8,6 +8,7 @@
 void print_buffer(char *b, int size)
 {
 	int i, j;
+
 	i = 0;
 	if (size <= 0)
 		putchar('\n');
