@@ -1,52 +1,50 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 /**
- * simple_print_buffer - prints buffer in hexa
- * @buffer: the address of memory to print
- * @size: the size of the memory to print
+ * argstostr - Concatenate all arguments of a program
+ * @ac: Arg count
+ * @av: Array of arguments
  *
- * Return: Nothing.
+ * Return: Pointer to new string, NULL if it fails
  */
-void simple_print_buffer(char *buffer, unsigned int size)
+char *argstostr(int ac, char **av)
 {
-	unsigned int i;
+	char *str;
+	int i, j, k, len;
 
-	i = 0;
-	while (i < size)
+	if (ac == 0 || av == NULL)
+		return (NULL);
+	i = len = 0;
+	while (i < ac)
 	{
-		if (i % 10)
+		j = 0;
+		while (av[i][j] != '\0')
 		{
-			printf(" ");
+			len++;
+			j++;
 		}
-		if (!(i % 10) && i)
-		{
-			printf("\n");
-		}
-		printf("0x%02x", buffer[i]);
+		len++;
 		i++;
 	}
-	printf("\n");
-}
-
-/**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
- */
-int main(void)
-{
-	char *buffer;
-
-	buffer = create_array(98, 'H');
-	if  (buffer == NULL)
+	len++;
+	str = malloc(len * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	i = k = 0;
+	while (i < ac)
 	{
-		printf("failed to allocate memory\n");
-		return (1);
+		j = 0;
+		while (av[i][j] != 0)
+		{
+			str[k] = av[i][j];
+			k++;
+			j++;
+		}
+		str[k] = '\n';
+		k++;
+		i++;
 	}
-	simple_print_buffer(buffer, 98);
-	free(buffer);
-	return (0);
+	return (str);
 }
 
