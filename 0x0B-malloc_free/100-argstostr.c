@@ -1,57 +1,52 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
- * _strlen - gets string length
- * @string: string
- * Return: length (int)
+ * simple_print_buffer - prints buffer in hexa
+ * @buffer: the address of memory to print
+ * @size: the size of the memory to print
+ *
+ * Return: Nothing.
  */
-
-int _strlen(char *string)
+void simple_print_buffer(char *buffer, unsigned int size)
 {
-	int length;
+	unsigned int i;
 
-	length = 0;
-	while (string[length] != '\0')
+	i = 0;
+	while (i < size)
 	{
-		length++;
+		if (i % 10)
+		{
+			printf(" ");
+		}
+		if (!(i % 10) && i)
+		{
+			printf("\n");
+		}
+		printf("0x%02x", buffer[i]);
+		i++;
 	}
-	return (length);
+	printf("\n");
 }
 
 /**
- * argstostr - concatenates all the arguments to a program
- * @ac: argc - number of arguments
- * @av: argv - array of arguments
- * Return: pointe to new string
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
  */
-
-char *argstostr(int ac, char **av)
+int main(void)
 {
-	int length, i, j, k;
-	char *str;
+	char *buffer;
 
-	if (ac == 0 || av == NULL)
-		return (NULL);
-
-	length = 0;
-	for (i = 0; i < ac; i++)
+	buffer = create_array(98, 'H');
+	if  (buffer == NULL)
 	{
-		length += _strlen(av[i]) + 1;
+		printf("failed to allocate memory\n");
+		return (1);
 	}
+	simple_print_buffer(buffer, 98);
+	free(buffer);
+	return (0);
+}
 
-	str = malloc(sizeof(char) * length + 1);
-	if (str == NULL)
-		return (NULL);
-
-	k = 0;
-	for (i = 0; i < ac; i++)
-	{
-		for (j = 0; j < _strlen(av[i]); j++)
-		{
-			str[k] = av[i][j];
-			k++;
-		}
-		str[k] = '\0';
-		return (str);
-	}
