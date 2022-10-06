@@ -8,7 +8,9 @@
  * @n: Amount of s2 to add to s1
  *
  * Return: pointer to new area in memory, NULL if it fails
+ *
  */
+
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *nstr, *empt;
