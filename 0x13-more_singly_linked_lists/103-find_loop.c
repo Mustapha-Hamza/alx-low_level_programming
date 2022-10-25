@@ -8,17 +8,26 @@
  * Return: Address of where the loop starts, NULL if
  * no loop is found
  */
+
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *find_listint_loop(listint_t *head)
+	listint_t *slow, *fast;
 
-		while (head != NULL)
+	slow = head;
+	fast = head;
+	while (head != NULL)
+	{
+		if (slow == fast)
 		{
-			holder = head;
-			head = head->next;
-			if (holder < head)
-				return (head);
+			while (head != NULL)
+			{
+				if (slow == fast)
+					return (slow);
+				slow = slow->next;
+				fast = fast->next;
+			}
 		}
-	return (NULL);
+		slow = slow->next;
+		fast = fast->next->next;
+	}
 }
-
