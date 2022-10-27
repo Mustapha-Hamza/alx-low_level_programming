@@ -9,7 +9,7 @@
  * @b: The string containing the binary
  * if the string is NULL, return the decimal value on success
  */
-if the string is NULL, return the decimal value on success
+unsigned int binary_to_uint(const char *b)
 {
 	unsigned int i, len;
 	unsigned int decval;
